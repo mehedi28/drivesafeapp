@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "131990654615",
+    "firebase_url": "https://drivesafe-fa626.firebaseio.com",
+    "project_id": "drivesafe-fa626",
+    "storage_bucket": "drivesafe-fa626.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:131990654615:android:f264e3c7a89ea6a5d5e3d2",
+        "android_client_info": {
+          "package_name": "com.zantrik.drivesafe"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "131990654615-jgdt33c25d9r83gcjjv8lg49b95u6ic8.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.zantrik.drivesafe",
+            "certificate_hash": "35e9419e504d5cf7a2880b37bf1b35feac650429"
+          }
+        },
+        {
+          "client_id": "131990654615-v7k6pdg56bl00pomde7v3shuqjv3s5ge.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC4uY3p5TXf85DMDqTnGSmWRfEHwzoOU_E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "131990654615-v7k6pdg56bl00pomde7v3shuqjv3s5ge.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
