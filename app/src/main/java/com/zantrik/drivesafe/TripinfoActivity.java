@@ -113,14 +113,6 @@ public class TripinfoActivity extends AppCompatActivity {
         });
     }
 
-    private void sendUserToHome() {
-        Intent homeIntent = new Intent(TripinfoActivity.this, MainActivity.class);
-        homeIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        homeIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        startActivity(homeIntent);
-        finish();
-    }
-
     private void sendUserToLogin() {
         Intent loginIntent = new Intent(TripinfoActivity.this, LoginActivity.class);
         loginIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);

@@ -63,15 +63,6 @@ public class UserprofileActivity extends AppCompatActivity {
         }
     }
 
-    private void sendUserToHome() {
-
-        Intent homeIntent = new Intent(UserprofileActivity.this, MainActivity.class);
-        homeIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        homeIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        startActivity(homeIntent);
-        finish();
-    }
-
     private void sendUserToLogin() {
         Intent loginIntent = new Intent(UserprofileActivity.this, LoginActivity.class);
         loginIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
@@ -113,12 +104,6 @@ public class UserprofileActivity extends AppCompatActivity {
             }
         });
     }
-
-
-    public void CANCELDATA(View view) {
-        sendUserToHome();
-    }
-
 
     public void POSTDATA(View view) {
         updateUserProfile();
