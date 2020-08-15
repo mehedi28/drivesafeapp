@@ -11,8 +11,11 @@ import android.widget.TextView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.Date;
 import java.util.Random;
 
 import retrofit2.Call;
@@ -37,6 +40,8 @@ public class TripinfoActivity extends AppCompatActivity {
 
         feedbackText = findViewById(R.id.trip_feedback);
         textViewResult = findViewById(R.id.triplist_result);
+
+        getSupportActionBar().setTitle("Trip Information");
     }
 
     @Override
@@ -76,12 +81,13 @@ public class TripinfoActivity extends AppCompatActivity {
                             textViewResult.setText("No Trip Found");
                         }
                         else{
+
                             Collections.reverse(Arrays.asList(tripinfoLists));
                             int count=1;
                             for (TripinfoList trip : tripinfoLists) {
                                 String content = "";
-                                content += "Date: " + trip.tripdatetime + "\n";
-                                content += "Trip Length: " + trip.triplength + "hour" + "\n";
+                                content += "Date: " + trip.tripdatetime.replace("T", " ") + "\n";
+                                content += "Trip Length: " + trip.triplength + " hour" + "\n";
                                 content += "Score: " + trip.tripscore + "\n\n";
                                 textViewResult.append(content);
                                 if(count==3){
@@ -107,10 +113,6 @@ public class TripinfoActivity extends AppCompatActivity {
         });
     }
 
-    public void CANCELDATA(View view) {
-        sendUserToHome();
-    }
-
     private void sendUserToHome() {
         Intent homeIntent = new Intent(TripinfoActivity.this, MainActivity.class);
         homeIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
@@ -127,51 +129,51 @@ public class TripinfoActivity extends AppCompatActivity {
         finish();
     }
 
-    public void SAVETRIP(View view) {
-
-        Random r = new Random();
-        double randomValue1 = 3 + (10 - 3) * r.nextDouble();
-        double randomValue2 = 0 + (10 - 0) * r.nextDouble();
-
-        textViewResult.setText("");
-        feedbackText.setVisibility(View.VISIBLE);
-        feedbackText.setText("");
-        String Phone = (Singleton.instance().fetchValueString("phone"));
-        int userid = Integer.parseInt(Singleton.instance().fetchValueString("userid"));
-        int numDrowsiness= 9;
-        int numPhone=5;
-        double tripscore=randomValue1;
-        double triplength=randomValue2;
-
-        Api.getClient().updateTripinfo(Phone, userid, numDrowsiness, numPhone, tripscore, triplength).enqueue(new Callback<UpdatetripinfoReq>() {
-            @SuppressLint("LongLogTag")
-            @Override
-            public void onResponse(Call<UpdatetripinfoReq> call, Response<UpdatetripinfoReq> response) {
-                if(!response.isSuccessful()){
-                    feedbackText.setText("code:" + String.valueOf(response.code()));
-                    return;
-                }
-                if(response.body().getData()!= null) {
-                    UpdateprofileRes updateprofileRes = response.body().getData();
-                    if(updateprofileRes.Success){
-                        feedbackText.setText("Added a new Trip");
-                        getTripinfo();
-                    }
-                    else{
-                        feedbackText.setText("no user found");
-                    }
-                }
-                else {
-                    feedbackText.setText("no user found");
-                }
-            }
-
-            @Override
-            public void onFailure(Call<UpdatetripinfoReq> call, Throwable t) {
-                feedbackText.setText("error" + t.getMessage());
-            }
-        });
-    }
+//    public void SAVETRIP(View view) {
+//
+//        Random r = new Random();
+//        double randomValue1 = 3 + (10 - 3) * r.nextDouble();
+//        double randomValue2 = 0 + (10 - 0) * r.nextDouble();
+//
+//        textViewResult.setText("");
+//        feedbackText.setVisibility(View.VISIBLE);
+//        feedbackText.setText("");
+//        String Phone = (Singleton.instance().fetchValueString("phone"));
+//        int userid = Integer.parseInt(Singleton.instance().fetchValueString("userid"));
+//        int numDrowsiness= 9;
+//        int numPhone=5;
+//        double tripscore=randomValue1;
+//        double triplength=randomValue2;
+//
+//        Api.getClient().updateTripinfo(Phone, userid, numDrowsiness, numPhone, tripscore, triplength).enqueue(new Callback<UpdatetripinfoReq>() {
+//            @SuppressLint("LongLogTag")
+//            @Override
+//            public void onResponse(Call<UpdatetripinfoReq> call, Response<UpdatetripinfoReq> response) {
+//                if(!response.isSuccessful()){
+//                    feedbackText.setText("code:" + String.valueOf(response.code()));
+//                    return;
+//                }
+//                if(response.body().getData()!= null) {
+//                    UpdateprofileRes updateprofileRes = response.body().getData();
+//                    if(updateprofileRes.Success){
+//                        feedbackText.setText("Added a new Trip");
+//                        getTripinfo();
+//                    }
+//                    else{
+//                        feedbackText.setText("no user found");
+//                    }
+//                }
+//                else {
+//                    feedbackText.setText("no user found");
+//                }
+//            }
+//
+//            @Override
+//            public void onFailure(Call<UpdatetripinfoReq> call, Throwable t) {
+//                feedbackText.setText("error" + t.getMessage());
+//            }
+//        });
+//    }
 
 
 }

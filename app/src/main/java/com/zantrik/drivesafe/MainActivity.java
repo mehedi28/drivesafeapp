@@ -27,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
         mCurrentUser = mAuth.getCurrentUser();
 
         Button button = findViewById(R.id.logout_btn);
+        Button userprofile_btn = findViewById(R.id.userprofile_btn);
 
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -34,12 +35,19 @@ public class MainActivity extends AppCompatActivity {
                 sendUserToLogin();
             }
         });
+
+        userprofile_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                sendUserToUpdateProfile();
+            }
+        });
     }
 
     @Override
     public void onStart() {
         super.onStart();
-        // Check if user is signed in (non-null) and update UI accordingly.
+//        // Check if user is signed in (non-null) and update UI accordingly.
         if(mCurrentUser == null){
             sendUserToLogin();
         }
@@ -58,11 +66,6 @@ public class MainActivity extends AppCompatActivity {
         loginIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         loginIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(loginIntent);
-        finish();
-    }
-
-    public void goUserprofile(View view) {
-        sendUserToUpdateProfile();
     }
 
     public void goTripinfo(View view) {
@@ -70,7 +73,6 @@ public class MainActivity extends AppCompatActivity {
         loginIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         loginIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(loginIntent);
-        finish();
     }
 }
 

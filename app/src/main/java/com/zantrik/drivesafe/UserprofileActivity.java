@@ -1,5 +1,6 @@
 package com.zantrik.drivesafe;
 
+import androidx.activity.OnBackPressedCallback;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
@@ -44,6 +45,8 @@ public class UserprofileActivity extends AppCompatActivity {
         savebtn = findViewById(R.id.save_btn);
 
         feedbackText.setVisibility(View.INVISIBLE);
+
+        getSupportActionBar().setTitle("User Profile");
     }
 
     @Override

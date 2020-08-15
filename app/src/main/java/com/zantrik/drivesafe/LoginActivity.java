@@ -64,6 +64,8 @@ public class LoginActivity extends AppCompatActivity {
         mLoginProgress.setVisibility(View.INVISIBLE);
         mLoginFeedbackText.setVisibility(View.INVISIBLE);
 
+
+
         mGenerateBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
