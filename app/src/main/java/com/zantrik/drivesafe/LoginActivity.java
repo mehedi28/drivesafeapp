@@ -181,7 +181,7 @@ public class LoginActivity extends AppCompatActivity {
         mLoginProgress.setVisibility(View.INVISIBLE);
         mGenerateBtn.setEnabled(true);
 
-        Intent homeIntent = new Intent(LoginActivity.this, MainActivity.class);
+        Intent homeIntent = new Intent(LoginActivity.this, HomeActivity.class);
         homeIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         homeIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(homeIntent);

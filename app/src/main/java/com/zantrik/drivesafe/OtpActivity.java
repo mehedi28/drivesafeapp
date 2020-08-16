@@ -136,7 +136,7 @@ public class OtpActivity extends AppCompatActivity {
     public void sendUserToHome() {
         mOtpProgress.setVisibility(View.INVISIBLE);
         mVerifyBtn.setEnabled(true);
-        Intent homeIntent = new Intent(OtpActivity.this, MainActivity.class);
+        Intent homeIntent = new Intent(OtpActivity.this, HomeActivity.class);
         homeIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         homeIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(homeIntent);

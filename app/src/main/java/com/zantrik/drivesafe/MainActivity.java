@@ -25,23 +25,6 @@ public class MainActivity extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
         mCurrentUser = mAuth.getCurrentUser();
-
-        Button button = findViewById(R.id.logout_btn);
-        Button userprofile_btn = findViewById(R.id.userprofile_btn);
-
-        button.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                mAuth.signOut();
-                sendUserToLogin();
-            }
-        });
-
-        userprofile_btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                sendUserToUpdateProfile();
-            }
-        });
     }
 
     @Override
@@ -51,28 +34,19 @@ public class MainActivity extends AppCompatActivity {
         if(mCurrentUser == null){
             sendUserToLogin();
         }
+        sendUserToHome();
     }
 
     private void sendUserToLogin() {
         Intent loginIntent = new Intent(MainActivity.this, LoginActivity.class);
-        loginIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        loginIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(loginIntent);
         finish();
     }
 
-    private void sendUserToUpdateProfile() {
-        Intent loginIntent = new Intent(MainActivity.this, UserprofileActivity.class);
-        loginIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        loginIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+    public void sendUserToHome() {
+        Intent loginIntent = new Intent(MainActivity.this, HomeActivity.class);
         startActivity(loginIntent);
-    }
-
-    public void goTripinfo(View view) {
-        Intent loginIntent = new Intent(MainActivity.this, TripinfoActivity.class);
-        loginIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        loginIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        startActivity(loginIntent);
+        finish();
     }
 }
 
